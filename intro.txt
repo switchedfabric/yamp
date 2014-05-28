@@ -1,0 +1,52 @@
+$Source: /usr/local/cvs/yamp/intro.txt,v $
+$Revision: 1.1 $
+$Date: 2002/01/08 10:30:00 $
+-------------------------------------------------------------------------------
+Use yamp to send SMTP mail from M$ hosts like at least so:
+
+c:> yamp -ssmtphost -rsomeone@some.place
+where smtphost is an smtp server like mailsrv or mailsrv.shoprite.co.za or 
+mail.mweb.co.za or 172.20.1.136 or chkbuy or chkbuy.shoprite.co.za or chkord 
+or swan.mail.pas.earthlink.net, you get the general idea.
+
+This will make yamp send an email to someone@some.place with subject "No subject" and body "No message body".
+
+To include a subject do
+c:> yamp -ssmtphost -rsomeone@some.place -u"This is the subject"
+
+To include a message body do 1 of the following:
+c:> yamp -ssmtphost -rsomeone@some.place -u... -b"This is the message body"
+or
+c:> yamp -ssmtphost -rsomeone@some.place -u... -bfilename.txt
+or
+c:> yamp -ssmtphost -rsomeone@some.place -u... < filename.txt
+where filename.txt contains the message
+or 
+c:> echo "This is the message body" | yamp -ssmtphost -rsomeone@some.place
+
+For more verbose output add a -v somewhere.
+
+To send to multiple recipients do:
+c:> yamp -ssmtphost -ruser1@shoprite.co.za,user2@shoprite.co.za,user3...
+or
+c:> yamp -ssmtphost -ruser1@shoprite.co.za -ruser2@shoprite.co.za -ruser3...
+or combinations of the above.
+
+To specify a reply-to address (cause you can't reply to SYSTEM@remedy)
+c:> yamp -ssmtphost -rsomeone@some.place -treply.to.me@a.nother.place
+
+You can add attachments:
+c:> yamp -ssmtphost -rsomeone@some.place -a"awordoc.doc"
+or
+c:> yamp -ssmtphost -rsomeone@some.place -a"awordoc.doc","anotherwordoc.doc"
+or
+c:> yamp -ssmtphost -rsomeone@some.place -a"awordoc.doc" -a"c:\winnt\system32\ntoskrnl.exe"
+or combinations of the above.
+Yamp can mail itself:
+c:> yamp -ssmtphost -rsomeone@some.place -ayamp.exe -u"Here's me"
+
+You have to have at least an SMTP server (-s flag) and one recipient (-r flag), the rest is optional, unlimited and order is not important.
+
+Comments, suggestions, bugs to wroos@shoprite.co.za
+
+Have fun
